@@ -49,7 +49,7 @@ export default function Home({ stocks }) {
   )
 }
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/stocks/products/`)
+  const res = await fetch(`http://stock-next-two.vercel.app/api/stocks/products/`)
   const stocks = await res.json()
   // console.debug('stock 1', stocks)
   return { props: { stocks } }
