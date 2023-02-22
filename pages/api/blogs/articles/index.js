@@ -1,6 +1,6 @@
 import { connect, model, models, Schema } from "mongoose"
-const connectionString = 'mongodb+srv://user1:zz00818168@cluster0.3j6uypm.mongodb.net/blogs'
-
+//const connectionString = 'mongodb+srv://user1:zz00818168@cluster0.3j6uypm.mongodb.net/blogs'
+const connectionString = process.env.MONGODB_URI
 
 export default async function handler(req, res) {
   await connect(connectionString);
@@ -8,6 +8,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'GET') {
     const docs = await Article.find()
+    console.log(docs)
     res.status(200).json(docs)
   } else if (req.method === 'POST') {
     console.log(req.body)
